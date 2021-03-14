@@ -10,6 +10,7 @@ class Constants {
         const val DATABASE_NAME = "article_db.db"
 
         const val SEARCH_NEWS_TIME_DELAY = 500L
+        const val QUERY_PAGE_SIZE = 20
 
     }
 }
