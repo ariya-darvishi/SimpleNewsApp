@@ -4,6 +4,7 @@ package com.example.simplenewsapp.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.simplenewsapp.data.local.models.Article
 import com.example.simplenewsapp.data.local.models.NewsResponse
 import com.example.simplenewsapp.util.Resource
 import kotlinx.coroutines.launch
@@ -55,5 +56,14 @@ class MainViewModel(
         return Resource.Error(response.message())
     }
 
+    fun savedNews(article: Article) = viewModelScope.launch {
+        newsRepository.upsert(article)
+    }
+
+    fun getSavedNews () = newsRepository.getSavedNews()
+
+    fun deleteArticle(article: Article) = viewModelScope.launch {
+        newsRepository.deleteArticle(article)
+    }
 
 }

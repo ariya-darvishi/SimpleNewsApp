@@ -12,6 +12,7 @@ import com.example.simplenewsapp.data.local.ArticleDatabase
 import com.example.simplenewsapp.main.MainRepository
 import com.example.simplenewsapp.main.MainViewModel
 import com.example.simplenewsapp.main.MainViewModelProviderFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_article.*
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
@@ -34,6 +35,11 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+
+        fab.setOnClickListener {
+            viewModel.savedNews(article)
+            Snackbar.make(view, "Article saved Successfully!", Snackbar.LENGTH_SHORT).show()
         }
 
     }
